@@ -112,9 +112,9 @@ var (
 			}
 		},
 		p.Cat(
-			p.Option(p.Literal("第")), spaces, singleNumber, spaces, p.Literal("章"), spaces,
-			p.Option(p.Literal("第")), spaces, rangeList, spaces, p.Literal("节")),
-		p.Cat(p.Option(p.Literal("第")), spaces, rangeList, spaces, p.Literal("章")),
+			p.Option(p.Literal("第")), spaces, singleNumber, spaces, p.Rune("章篇"), spaces,
+			p.Option(p.Literal("第")), spaces, rangeList, spaces, p.Rune("节節")),
+		p.Cat(p.Option(p.Literal("第")), spaces, rangeList, spaces, p.Rune("章篇")),
 		p.Cat(singleNumber, spaces, p.Rune(":："), spaces, rangeList))
 	spaceChapterVerse = p.HandleCat(
 		func(b *p.Buffer, r p.Run, values []p.Value) p.Value {

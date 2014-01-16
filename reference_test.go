@@ -7,6 +7,8 @@ import (
 
 func TestFindAllReferences(t *testing.T) {
 	input := `
+	彼得前書5章5-9節
+	讀經: 詩篇116篇
 2014年 01月 16日 - David C. McCasland
 
 MP3 下載
