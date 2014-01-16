@@ -8,6 +8,7 @@ type Reference struct {
 	Book Book
 	ChapterVerse ChapterVerse
 	Annotation Annotation
+	Text string
 }
 
 func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Reference {
@@ -21,6 +22,7 @@ func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Refe
 					Begin: pos,
 					End: cv.Annotation.End,
 				},
+				Text: input[pos:cv.Annotation.End],
 			}
 		}
 	}
@@ -35,6 +37,7 @@ func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Refe
 					Begin: pos,
 					End: cv.Annotation.End,
 				},
+				Text: input[pos:cv.Annotation.End],
 			}
 		}
 	}
