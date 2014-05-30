@@ -100,19 +100,19 @@ func (this *bookParser) AddBook(b BookId, names ...string) {
 }
 
 type Book struct {
-	Book          BookId
-	Annotation    Annotation
+	Book       BookId
+	Annotation Annotation
 }
 
 func (this *bookParser) parseFrom(input string, pos int) *Book {
 	// TODO: Make trie work with string input
-	prefix, found := this.trie.MatchLongestPrefix([]byte(input[pos:]))
+	prefix, found := this.trie.MatchLongestPrefixString(input[pos:])
 	if found {
 		return &Book{
-			Book:       prefix.Value.(BookId),
+			Book: prefix.Value.(BookId),
 			Annotation: Annotation{
-				Begin:      pos,
-				End:     pos+len(prefix.Prefix),
+				Begin: pos,
+				End:   pos + prefix.PrefixLength,
 			},
 		}
 	}

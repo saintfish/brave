@@ -76,4 +76,3 @@ func newChineseBookParser() *bookParser {
 	addBook(p, Revelation, "启示录", "啟示錄", "启", "啟")
 	return p
 }
-

@@ -5,10 +5,10 @@ import (
 )
 
 type Reference struct {
-	Book Book
+	Book         Book
 	ChapterVerse ChapterVerse
-	Annotation Annotation
-	Text string
+	Annotation   Annotation
+	Text         string
 }
 
 func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Reference {
@@ -16,11 +16,11 @@ func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Refe
 		cv := parseChapterVerse(input, pos)
 		if cv != nil {
 			return &Reference{
-				Book: *prevBook,
+				Book:         *prevBook,
 				ChapterVerse: *cv,
 				Annotation: Annotation{
 					Begin: pos,
-					End: cv.Annotation.End,
+					End:   cv.Annotation.End,
 				},
 				Text: input[pos:cv.Annotation.End],
 			}
@@ -31,11 +31,11 @@ func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Refe
 		cv := parseChapterVerse(input, b.Annotation.End)
 		if cv != nil {
 			return &Reference{
-				Book: *b,
+				Book:         *b,
 				ChapterVerse: *cv,
 				Annotation: Annotation{
 					Begin: pos,
-					End: cv.Annotation.End,
+					End:   cv.Annotation.End,
 				},
 				Text: input[pos:cv.Annotation.End],
 			}
@@ -45,6 +45,7 @@ func parseReference(bp *bookParser, input string, pos int, prevBook *Book) *Refe
 }
 
 var chineseBookParser = newChineseBookParser()
+
 func FindAllReferences(input string) []Reference {
 	result := []Reference{}
 	charSinceLastRef := 0
