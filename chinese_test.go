@@ -14,7 +14,7 @@ func TestChineseParser(t *testing.T) {
 	var testData = []testDataEntry{
 		testDataEntry{"希伯來書4章14-16節", bible.SingleRangeRef(bible.Hebrews, 4, 14, 16)},
 		testDataEntry{"詩篇73篇", bible.SingleRangeRef(bible.Psalm, 73, bible.ChapterBegin, bible.ChapterEnd)},
-		testDataEntry{"詩篇73篇", bible.SingleRangeRef(bible.Psalm, 73, bible.ChapterBegin, bible.ChapterEnd)},
+		testDataEntry{"希伯来书12章1-5节", bible.SingleRangeRef(bible.Hebrews, 12, 1, 5)},
 	}
 	for _, entry := range testData {
 		match, offset, value := chineseParser.parse(entry.input)

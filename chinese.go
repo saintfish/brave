@@ -294,7 +294,7 @@ func init() {
 	ccp := new(charCheckerParser)
 
 	chineseParser = newParser([]tokenizerParser{
-		fullDict, abbrDict, numDict, chapterDict, ss, ccp,
+		fullDict, abbrDict, numDict, chapterDict, verseDict, ss, ccp,
 	})
 
 	for _, p := range chinesePatterns {
