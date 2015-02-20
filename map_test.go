@@ -1,8 +1,8 @@
 package brave
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestMapToken(t *testing.T) {
@@ -29,13 +29,18 @@ func TestMapToken(t *testing.T) {
 		}},
 		Tree{I: 10, S: "bb"},
 	}
-	var m = map_{
+	var m = newMap(true)
+	m.m = map[interface{}]interface{}{
 		1: 10, 2: 20, 3: 30,
 		"a": "aa", "b": "bb", "c": "cc",
 	}
 	// Try multiple times to test src is not changed
 	for i := 0; i < 10; i++ {
-		dstForest, ok := mapData(srcForest, m).(Forest)
+		dst, err := mapData(srcForest, m)
+		if err != nil {
+			t.Errorf("mapToken unsuccess %v", err)
+		}
+		dstForest, ok := dst.(Forest)
 		if !ok {
 			t.Errorf("mapToken doesn't return the same type")
 			break
@@ -44,5 +49,13 @@ func TestMapToken(t *testing.T) {
 			t.Errorf("%v != %v", dstForest, expForest)
 			break
 		}
+	}
+	var badMap = newMap(true)
+	badMap.m = map[interface{}]interface{}{
+		"a": "aa", "b": "bb", "c": "cc",
+	}
+	dst, err := mapData(srcForest, badMap)
+	if err == nil {
+		t.Errorf("Should fail to map with badMap %v", dst)
 	}
 }
