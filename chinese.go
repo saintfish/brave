@@ -11,32 +11,46 @@ var chinesePatterns = []struct {
 	ref     bible.RefRangeList
 }{
 	{
-		"希伯來書12章1-5節",
+		"希伯來書 12 章 1-5 節",
 		bible.SingleRangeRef(bible.Hebrews, 12, 1, 5),
 	},
 	{
-		"提摩太後書3章1-5,10-17節",
+		"提摩太後書 3 章 1-5 , 10-17 節",
 		bible.RefRangeList{
 			bible.SingleRangeRef(bible.Timothy2, 3, 1, 5)[0],
 			bible.SingleRangeRef(bible.Timothy2, 3, 10, 17)[0],
 		},
 	},
 	{
-		"尼希米記6章1-9,15節",
+		"羅馬書 8 章 14-17 節 , 24-26 節",
+		bible.RefRangeList{
+			bible.SingleRangeRef(bible.Romans, 8, 14, 17)[0],
+			bible.SingleRangeRef(bible.Romans, 8, 24, 26)[0],
+		},
+	},
+	{
+		"尼希米記 6 章 1-9 , 15 節",
 		bible.RefRangeList{
 			bible.SingleRangeRef(bible.Nehemiah, 6, 1, 9)[0],
 			bible.SingleRangeRef(bible.Nehemiah, 6, 15, 15)[0],
 		},
 	},
 	{
-		"诗篇23篇",
+		"诗篇 23 篇",
 		bible.SingleRangeRef(bible.Psalm, 23, bible.ChapterBegin, bible.ChapterEnd),
 	},
 	{
-		"撒母耳記上18章1-4,23章15-19節",
+		"撒母耳記上 18 章 1-4 , 23 章 15-19 節",
 		bible.RefRangeList{
 			bible.SingleRangeRef(bible.Samuel1, 18, 1, 4)[0],
 			bible.SingleRangeRef(bible.Samuel1, 23, 15, 19)[0],
+		},
+	},
+	{
+		"民數記 13 章 25 節 - 14 章 19 節",
+		bible.RefRangeList{
+			bible.SingleRangeRef(bible.Numbers, 13, 25, 25)[0],
+			bible.SingleRangeRef(bible.Numbers, 14, 19, 19)[0],
 		},
 	},
 }
@@ -136,6 +150,7 @@ var chineseBookNames = map[string]bible.BookID{
 	"加拉太書":    bible.Galatians,
 	"以弗所书":    bible.Ephesians,
 	"以弗所書":    bible.Ephesians,
+	"腓立比書":    bible.Philippians,
 	"腓利比書":    bible.Philippians,
 	"腓立比书":    bible.Philippians,
 	"歌罗西书":    bible.Colossians,

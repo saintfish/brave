@@ -46,7 +46,7 @@ func (ss *spaceSkipper) getTokenizer(state parserState) (newState parserState, t
 		return state, nil, nil
 	}
 	for i, c := range state.input[state.offset:] {
-		if c != ' ' {
+		if !strings.ContainsRune(" \t", c) {
 			if i == 0 {
 				return state, nil, nil
 			}
@@ -61,7 +61,7 @@ func (ss *spaceSkipper) getToken(state parserState) (bool, parserState, interfac
 		return false, state, nil
 	}
 	for i, c := range state.input[state.offset:] {
-		if c != ' ' {
+		if !strings.ContainsRune(" \t", c) {
 			match := i != 0 || ss.optional
 			return match, state.advanceBy(i), nil
 		}
