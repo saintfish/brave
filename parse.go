@@ -61,7 +61,7 @@ func (ss *spaceSkipper) getToken(state parserState) (bool, parserState, interfac
 		return false, state, nil
 	}
 	for i, c := range state.input[state.offset:] {
-		if !strings.ContainsRune(" \t", c) {
+		if !strings.ContainsRune(" \t\u2029", c) {
 			match := i != 0 || ss.optional
 			return match, state.advanceBy(i), nil
 		}

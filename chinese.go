@@ -53,6 +53,13 @@ var chinesePatterns = []struct {
 			bible.SingleRangeRef(bible.Numbers, 14, 19, 19)[0],
 		},
 	},
+	{
+		"詩篇 18 篇 1-3 節 、 46 節",
+		bible.RefRangeList{
+			bible.SingleRangeRef(bible.Psalm, 18, 1, 3)[0],
+			bible.SingleRangeRef(bible.Psalm, 18, 46, 46)[0],
+		},
+	},
 }
 
 var chineseBookNames = map[string]bible.BookID{
@@ -176,10 +183,13 @@ var chineseBookNames = map[string]bible.BookID{
 	"彼得后书":    bible.Peter2,
 	"彼得後書":    bible.Peter2,
 	"約翰壹書":    bible.John1,
+	"約翰一書":    bible.John1,
 	"约翰一书":    bible.John1,
 	"約翰貳書":    bible.John2,
+	"約翰二書":    bible.John2,
 	"约翰二书":    bible.John2,
 	"約翰參書":    bible.John3,
+	"約翰三書":    bible.John3,
 	"约翰三书":    bible.John3,
 	"犹大书":     bible.Jude,
 	"猶大書":     bible.Jude,
@@ -304,12 +314,16 @@ func init() {
 	verseDict := new(dict)
 	verseDict.add("节", nil, true)
 	verseDict.add("節", nil, true)
+	sepDict := new(dict)
+	sepDict.add(",", nil, true)
+	sepDict.add("、", nil, true)
+	sepDict.add("，", nil, true)
 
 	ss := &spaceSkipper{true}
 	ccp := new(charCheckerParser)
 
 	chineseParser = newParser([]tokenizerParser{
-		fullDict, abbrDict, numDict, chapterDict, verseDict, ss, ccp,
+		fullDict, abbrDict, numDict, chapterDict, verseDict, sepDict, ss, ccp,
 	})
 
 	for _, p := range chinesePatterns {
