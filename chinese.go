@@ -47,10 +47,19 @@ var chinesePatterns = []struct {
 		},
 	},
 	{
+		"撒母耳記上 18 章 1-4 節 , 23 章 15-19 節",
+		bible.RefRangeList{
+			bible.SingleRangeRef(bible.Samuel1, 18, 1, 4)[0],
+			bible.SingleRangeRef(bible.Samuel1, 23, 15, 19)[0],
+		},
+	},
+	{
 		"民數記 13 章 25 節 - 14 章 19 節",
 		bible.RefRangeList{
-			bible.SingleRangeRef(bible.Numbers, 13, 25, 25)[0],
-			bible.SingleRangeRef(bible.Numbers, 14, 19, 19)[0],
+			bible.RefRange{
+				Begin: bible.Ref{bible.Numbers, 13, 25},
+				End: bible.Ref{bible.Numbers, 14, 19},
+			},
 		},
 	},
 	{
@@ -58,6 +67,13 @@ var chinesePatterns = []struct {
 		bible.RefRangeList{
 			bible.SingleRangeRef(bible.Psalm, 18, 1, 3)[0],
 			bible.SingleRangeRef(bible.Psalm, 18, 46, 46)[0],
+		},
+	},
+	{
+		"詩篇 119 篇 14 , 33 - 40 節",
+		bible.RefRangeList{
+			bible.SingleRangeRef(bible.Psalm, 119, 14, 14)[0],
+			bible.SingleRangeRef(bible.Psalm, 119, 33, 40)[0],
 		},
 	},
 }
