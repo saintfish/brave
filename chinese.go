@@ -81,6 +81,8 @@ var chinesePatterns = []struct {
 var chineseBookNames = map[string]bible.BookID{
 	"创世记":     bible.Genesis,
 	"創世記":     bible.Genesis,
+	"創世纪":     bible.Genesis,
+	"創世紀":     bible.Genesis,
 	"出埃及記":    bible.Exodus,
 	"出埃及记":    bible.Exodus,
 	"利未記":     bible.Leviticus,
